@@ -5,10 +5,10 @@ echo "Updating repositories..."
 sudo apt update -y
 
 echo "Installing packages..."
-sudo apt install --no-install-recommends nala fastfetch sway swaylock swayidle waybar rofi alacritty light git curl fonts-font-awesome libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany -y
+sudo apt install --no-install-recommends nala fastfetch sway swaylock swayidle waybar rofi alacritty light git curl libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany upower -y
 
-echo "Installing additional set of packages..."
-sudo apt install qbittorrent flameshot neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb -y
+echo "Installing additional packages..."
+sudo apt install qbittorrent flameshot neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto -y
 
 echo "Adding 32-bit architecture..."
 sudo dpkg --add-architecture i386
@@ -27,24 +27,24 @@ cd ~/dotfiles-deb
 
 echo "Copying dotfiles..."
 mkdir -p ~/.config
-cp config/* ~/.config
+cp config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
 cp .zshrc ~/
 cd
-echo "Deleting dotfiles clone..."
+echo "Removing dotfiles clone..."
 rm -rf ~/dotfiles-deb
 
 echo "Cloning fonts..."
 git clone https://github.com/Peppereli/fonts ~/
-
+cd
 echo "Copying fonts..."
 sudo cp -rf ~/fonts/* /usr/share/fonts/
 
 echo "Updating font cache..."
 fc-cache -f -v
 
-echo "Deleting fonts clone..."
+echo "Removing fonts clone..."
 rm -rf ~/fonts
 
 echo "Installing brave-browser..."
@@ -68,7 +68,7 @@ cd
 echo "Updating icon cache..."
 gtk-update-icon-cache
 
-echo "Deleting themes clone..."
+echo "Removing themes clone..."
 rm -rf ~/themes
 
 echo "Changing default shell to zsh..."
