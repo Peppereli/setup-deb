@@ -76,7 +76,7 @@ rm -rf ~/themes
 
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
-sudo nala purge xterm -YOUR
+sudo nala purge xterm -y
 
 echo "INSTALLING ly DISPLAY MANAGER..."
 echo "DOWNLOADING ZIG..."
@@ -97,6 +97,7 @@ echo "CLEANING UP INSTALLATION..."
 cd
 rm zig-x86_64-linux-0.14.1.tar.xz
 rm -rf zig
+sudo nala clean
 
 echo "SETTING DEFAULT APPLICATIONS..."
 xdg-mime default xarchiver.desktop application/zip
