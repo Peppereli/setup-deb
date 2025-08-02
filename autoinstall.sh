@@ -4,17 +4,18 @@ echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS 
 echo "You might be prompted to enter your password a few times."
 
 echo "Updating repositories..."
-sudo apt update -y
+sudo apt update
 
 echo "Installing packages..."
-sudo apt install --no-install-recommends nala fastfetch sway swaylock swayidle waybar rofi alacritty light git curl libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany upower -y
+sudo apt install --no-install-recommends nala -y
+sudo nala install --no-install-recommends fastfetch sway swaylock swayidle waybar rofi alacritty light curl libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany upower fonts-font-awesome -y
 
 echo "Installing additional packages..."
-sudo apt install qbittorrent flameshot neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto -y
+sudo nala install qbittorrent flameshot neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto git -y
 
 echo "Adding 32-bit architecture..."
 sudo dpkg --add-architecture i386
-sudo apt update
+sudo nala update
 
 echo "Adding flathub repository..."
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -75,6 +76,6 @@ rm -rf ~/themes
 
 echo "Changing default shell to zsh..."
 sudo chsh -s $(which zsh) $USER
-sudo apt purge xterm -y && sudo apt autoremove -y
+sudo nala purge xterm -y
 
 echo "Autoinstall script finished! Time to reboot. Run 'sudo reboot'"
