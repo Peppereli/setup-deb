@@ -1,6 +1,8 @@
 #!/bin/bash
 echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS THING OF OURS DOES ITS THING."
 
+echo "You might be prompted to enter your password a few times."
+
 echo "Updating repositories..."
 sudo apt update -y
 
