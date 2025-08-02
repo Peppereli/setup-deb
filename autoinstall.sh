@@ -33,6 +33,8 @@ cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
 cp .zshrc ~/
+chmod +x ~/.config/sway/exit.sh
+chmod +x ~/.config/sway/audio.sh
 cd
 echo "CLEANING DOTFILES CLONE..."
 rm -rf ~/dotfiles-deb
