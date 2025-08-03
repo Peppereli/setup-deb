@@ -30,6 +30,7 @@ cd ~/dotfiles-deb
 
 echo "COPYING DOTFILES..."
 mkdir -p ~/.config
+mkdir -p ~/Pictures
 cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
