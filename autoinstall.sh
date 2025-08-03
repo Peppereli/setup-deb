@@ -8,7 +8,8 @@ sudo apt update
 
 echo "INSTALLING PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends fastfetch sway swaylock swayidle waybar rofi alacritty light curl libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany upower fonts-font-awesome fonts-dejavu fonts-dejavu-extra ffmpegthumbnailer thunar-media-tags-plugin cmus -y
+sudo nala install alacritty light sway swaybg swayidle swayimg swaylock waybar wofi fonts-font-awesome -y
+sudo nala install --no-install-recommends fastfetch rofi curl libreoffice libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ build-essential fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler libpam0g-dev libxcb-xkb-dev flatpak geany fonts-dejavu fonts-dejavu-extra ffmpegthumbnailer thunar-media-tags-plugin cmus upower -y
 sudo nala install qbittorrent flameshot neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
@@ -78,7 +79,7 @@ rm -rf ~/themes
 
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
-sudo nala purge xterm -y
+sudo nala purge xterm foot wmenu -y
 
 echo "INSTALLING ly DISPLAY MANAGER..."
 echo "DOWNLOADING ZIG..."
