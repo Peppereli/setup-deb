@@ -22,6 +22,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 echo "DISABLING BLUETOOTH..."
 sudo systemctl stop bluetooth
 sudo systemctl disable bluetooth
+sudo systemctl enable fstrim.timer
 
 echo "CLONING DOTFILES..."
 cd
