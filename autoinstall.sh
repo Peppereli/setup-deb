@@ -24,6 +24,9 @@ sudo systemctl stop bluetooth
 sudo systemctl disable bluetooth
 sudo systemctl enable fstrim.timer
 
+echo "INSTALLING OH MY ZSH!..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 echo "CLONING DOTFILES..."
 cd
 git clone https://github.com/Peppereli/dotfiles-deb
@@ -81,7 +84,6 @@ rm -rf ~/themes
 
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo nala purge xterm -y
 
 echo "INSTALLING ly DISPLAY MANAGER..."
