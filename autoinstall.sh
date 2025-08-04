@@ -8,20 +8,22 @@ sudo apt update
 
 echo "INSTALLING PACKAGES CORE PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swayimg swaylock waybar fonts-font-awesome fzf fastfetch rofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc g++ fzf zsh sxiv zip unzip thunar thunar-volman thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer thunar-media-tags-plugin cmus upower acpi -y
+sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock waybar fonts-font-awesome fzf fastfetch rofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi -y
 sudo nala install transmission-gtk grim slurp wl-clipboard neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
 sudo nala update
 
-echo "ADDING FLATHUB REPOSITORY..."
-sudo nala install --no-install-recommends flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#echo "ADDING FLATHUB REPOSITORY..."
+#sudo nala install --no-install-recommends flatpak
+#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "DISABLING BLUETOOTH..."
 sudo systemctl stop bluetooth
 sudo systemctl disable bluetooth
+
+echo "ENABLING fstrim (SSD OPTIMIZATION PROGRAM)..."
 sudo systemctl enable fstrim.timer
 
 echo "INSTALLING OH MY ZSH!..."
@@ -86,29 +88,31 @@ echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "REMOVING UNNEEDED PACKAGES..."
 sudo nala purge xterm -y
 
-echo "INSTALLING ly DISPLAY MANAGER..."
-echo "INSTALLING DEPENDENCIES..."
-sudo nala install --no-install-recommends build-essential libpam0g-dev libxcb-xkb-dev -y
-echo "DOWNLOADING ZIG..."
-wget https://ziglang.org/download/0.14.1/zig-x86_64-linux-0.14.1.tar.xz ~/
-cd
-tar -xvf zig-x86_64-linux-0.14.1.tar.xz
-mv zig-x86_64-linux-0.14.1 zig
+#echo "INSTALLING ly DISPLAY MANAGER..."
+#echo "INSTALLING DEPENDENCIES..."
+#sudo nala install --no-install-recommends build-essential libpam0g-dev libxcb-xkb-dev -y
+#echo "DOWNLOADING ZIG..."
+#wget https://ziglang.org/download/0.14.1/zig-x86_64-linux-0.14.1.tar.xz ~/
+#cd
+#tar -xvf zig-x86_64-linux-0.14.1.tar.xz
+#mv zig-x86_64-linux-0.14.1 zig
 
-echo "CLONING ly REPOSITORY..."
-cd
-git clone https://codeberg.org/AnErrupTion/ly
-cd ly
-~/zig/zig build
-sudo ~/zig/zig build installexe
-sudo systemctl enable ly.service
+#echo "CLONING ly REPOSITORY..."
+#cd
+#git clone https://codeberg.org/AnErrupTion/ly
+#cd ly
+#~/zig/zig build
+#sudo ~/zig/zig build installexe
+#sudo systemctl enable ly.service
 
 echo "CLEANING UP INSTALLATION..."
 cd
-rm zig-x86_64-linux-0.14.1.tar.xz
-rm -rf zig
+#rm zig-x86_64-linux-0.14.1.tar.xz
+#rm -rf zig
 sudo nala clean
 
 echo "SETTING DEFAULT APPLICATIONS..."
