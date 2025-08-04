@@ -90,6 +90,12 @@ sudo chsh -s $(which zsh) $USER
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
+echo "INSTALLING HEROIC GAMES LAUNCHER..."
+wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.18.0/Heroic-2.18.0-linux-amd64.deb ~/
+cd
+sudo dpkg -i Heroic-2.18.0-linux-amd64.deb
+rm Heroic-2.18.0-linux-amd64.deb
+
 echo "REMOVING UNNEEDED PACKAGES..."
 sudo nala purge xterm -y
 
