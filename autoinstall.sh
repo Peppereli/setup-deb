@@ -16,9 +16,9 @@ echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
 sudo nala update
 
-#echo "ADDING FLATHUB REPOSITORY..."
-#sudo nala install --no-install-recommends flatpak
-#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+echo "ADDING FLATHUB REPOSITORY..."
+sudo nala install --no-install-recommends flatpak
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "DISABLING BLUETOOTH..."
 sudo systemctl stop bluetooth
