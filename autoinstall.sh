@@ -81,7 +81,8 @@ rm -rf ~/themes
 
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
-sudo nala purge xterm foot wmenu -y
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo nala purge xterm -y
 
 echo "INSTALLING ly DISPLAY MANAGER..."
 echo "INSTALLING DEPENDENCIES..."
