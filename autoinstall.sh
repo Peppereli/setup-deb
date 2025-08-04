@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en-GB
 echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS THING OF OURS DOES ITS THING."
 
 echo "PLEASE ENTER YOUR LOGIN PASSWORD AND LET IT DO ITS THING"
