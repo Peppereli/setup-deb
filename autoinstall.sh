@@ -9,16 +9,16 @@ sudo apt update
 
 echo "INSTALLING PACKAGES CORE PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock waybar fonts-font-awesome fzf fastfetch rofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi -y
+sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock waybar fonts-font-awesome fzf fastfetch rofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi g++ -y
 sudo nala install transmission-gtk grim slurp wl-clipboard neovim pipewire pipewire-pulse xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
 sudo nala update
 
-echo "ADDING FLATHUB REPOSITORY..."
-sudo nala install --no-install-recommends flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+#echo "ADDING FLATHUB REPOSITORY..."
+#sudo nala install --no-install-recommends flatpak
+#flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "DISABLING BLUETOOTH..."
 sudo systemctl stop bluetooth
@@ -26,9 +26,6 @@ sudo systemctl disable bluetooth
 
 echo "ENABLING fstrim (SSD OPTIMIZATION PROGRAM)..."
 sudo systemctl enable fstrim.timer
-
-echo "INSTALLING OH MY ZSH!..."
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 echo "CLONING DOTFILES..."
 cd
@@ -47,6 +44,8 @@ chmod +x ~/.config/sway/audio.sh
 cd
 echo "CLEANING DOTFILES CLONE..."
 rm -rf ~/dotfiles-deb
+
+
 
 echo "CLONING FONTS..."
 git clone https://github.com/Peppereli/fonts
@@ -185,5 +184,9 @@ xdg-mime default nvim.desktop text/csv
 xdg-mime default nvim.desktop application/yaml
 xdg-mime default nvim.desktop text/yaml
 xdg-mime default nvim.desktop text/x-log
+
+echo "INSTALLING OH MY ZSH!..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 
 echo "INSTALLATION FINISHED! TIME TO REBOOT. RUN 'sudo reboot'."
