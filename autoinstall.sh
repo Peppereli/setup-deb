@@ -94,13 +94,10 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "INSTALLING HEROIC GAMES LAUNCHER..."
-wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.18.0/Heroic-2.18.0-linux-amd64.deb ~/
+wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.18.1/Heroic-2.18.1-linux-amd64.deb ~/
 cd
-sudo dpkg -i Heroic-2.18.0-linux-amd64.deb
-rm Heroic-2.18.0-linux-amd64.deb
-
-echo "REMOVING UNNEEDED PACKAGES..."
-sudo nala purge xterm -y
+sudo dpkg -i Heroic-2.18.1-linux-amd64.deb
+rm Heroic-2.18.1-linux-amd64.deb
 
 #echo "INSTALLING ly DISPLAY MANAGER..."
 #echo "INSTALLING DEPENDENCIES..."
@@ -188,5 +185,9 @@ xdg-mime default nvim.desktop text/csv
 xdg-mime default nvim.desktop application/yaml
 xdg-mime default nvim.desktop text/yaml
 xdg-mime default nvim.desktop text/x-log
+
+echo "REMOVING UNNEEDED PACKAGES..."
+sudo nala purge xterm -y
+sudo nala clean
 
 echo "INSTALLATION FINISHED! TIME TO REBOOT. RUN 'sudo reboot'."
