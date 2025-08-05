@@ -37,7 +37,7 @@ mkdir -p ~/Pictures
 cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
-cp .zshrc ~/zshrc
+cp .zshrc ~/
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/sway/audio.sh
 cd
@@ -60,11 +60,11 @@ rm -rf ~/fonts
 
 echo "INSTALLING BRAVE BROWSER..."
 curl -fsS https://dl.brave.com/install.sh | sh
-
+cd
 echo "CLONING NVCHAD..."
 git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 echo "TO INSTALL NVCHAD RUN 'nvim' AND LET IT INSTALL THE PLUGINS"
-
+cd
 echo "CLONING GTK THEMES..."
 git clone https://github.com/Peppereli/themes
 cd ~/themes
