@@ -8,6 +8,9 @@ echo "PLEASE ENTER YOUR LOGIN PASSWORD AND LET IT DO ITS THING"
 echo "UPDATING REPOSITORIES..."
 sudo apt update
 
+echo "INSTALLING PACKAGES..."
+sudo apt install --no-install-recommends nala -y
+sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock waybar grim slurp fonts-font-awesome fzf fastfetch rofi wofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi g++ pipewire wireplumber pipewire-pulse qbittorrent qt6-wayland neovim xwayland xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh -y
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
 sudo nala update
@@ -34,7 +37,7 @@ mkdir -p ~/Pictures
 cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
-cp .zshrc ~/
+cp .zshrc ~/zshrc
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/sway/audio.sh
 cd
