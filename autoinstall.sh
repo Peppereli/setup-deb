@@ -10,8 +10,8 @@ sudo apt update
 
 echo "INSTALLING PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock waybar grim slurp fonts-font-awesome fzf fastfetch rofi wofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi g++ xwayland  fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh -y
-sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim wl-clipboard yt-dlp -y
+sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock ffmpeg yt-dlp wl-clipboard waybar grim slurp fonts-font-awesome fzf fastfetch rofi wofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop dysk gcc zsh sxiv zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi g++ xwayland  fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh -y
+sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
@@ -39,7 +39,7 @@ mkdir -p ~/Pictures
 cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
-cp .zshrc ~/zshrc
+cp .zshrc ~/
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/sway/audio.sh
 cd
@@ -88,10 +88,6 @@ rm -rf ~/themes
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
 
-echo "INSTALLING ZSH PLUGINS..."
-cd
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "INSTALLING HEROIC GAMES LAUNCHER..."
 wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.18.1/Heroic-2.18.1-linux-amd64.deb ~/
@@ -189,5 +185,10 @@ xdg-mime default nvim.desktop text/x-log
 echo "REMOVING UNNEEDED PACKAGES..."
 sudo nala purge xterm -y
 sudo nala clean
+
+echo "INSTALLING ZSH PLUGINS..."
+cd
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "INSTALLATION FINISHED! TIME TO REBOOT. RUN 'sudo reboot'."
