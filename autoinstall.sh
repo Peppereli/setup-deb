@@ -40,6 +40,7 @@ cp -rf config/* ~/.config/
 cp .gtkrc-2.0 ~/
 cp .Xresources ~/
 cp .zshrc ~/
+cp .zprofile ~/
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/sway/audio.sh
 cd
