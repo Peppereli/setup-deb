@@ -10,7 +10,7 @@ sudo apt update
 
 echo "INSTALLING PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock ffmpeg yt-dlp wl-clipboard waybar grim slurp fonts-font-awesome fzf fastfetch rofi wofi curl libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh nomacs zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer cmus upower acpi g++ xwayland  fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh -y
+sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf fastfetch rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer quodlibet acpi g++ xwayland  fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge -y
 sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
@@ -36,13 +36,9 @@ cd ~/dotfiles-deb
 echo "COPYING DOTFILES..."
 mkdir -p ~/.config
 mkdir -p ~/Pictures
-cp -rf config/* ~/.config/
-cp .gtkrc-2.0 ~/
-cp .Xresources ~/
-cp .zshrc ~/
-cp .zprofile ~/
+rm -rf .git
+cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
-chmod +x ~/.config/sway/audio.sh
 cd
 echo "CLEANING DOTFILES CLONE..."
 rm -rf ~/dotfiles-deb
@@ -51,7 +47,6 @@ rm -rf ~/dotfiles-deb
 
 echo "CLONING FONTS..."
 git clone https://github.com/Peppereli/fonts
-cd
 echo "COPYING FONTS..."
 sudo cp -rf ~/fonts/* /usr/share/fonts/
 
@@ -63,7 +58,6 @@ rm -rf ~/fonts
 
 echo "INSTALLING BRAVE BROWSER..."
 curl -fsS https://dl.brave.com/install.sh | sh
-cd
 echo "CLONING NVCHAD..."
 git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
 echo "TO INSTALL NVCHAD RUN 'nvim' AND LET IT INSTALL THE PLUGINS"
@@ -96,27 +90,7 @@ cd
 sudo dpkg -i Heroic-2.18.1-linux-amd64.deb
 rm Heroic-2.18.1-linux-amd64.deb
 
-#echo "INSTALLING ly DISPLAY MANAGER..."
-#echo "INSTALLING DEPENDENCIES..."
-#sudo nala install --no-install-recommends build-essential libpam0g-dev libxcb-xkb-dev -y
-#echo "DOWNLOADING ZIG..."
-#wget https://ziglang.org/download/0.14.1/zig-x86_64-linux-0.14.1.tar.xz ~/
-#cd
-#tar -xvf zig-x86_64-linux-0.14.1.tar.xz
-#mv zig-x86_64-linux-0.14.1 zig
-
-#echo "CLONING ly REPOSITORY..."
-#cd
-#git clone https://codeberg.org/AnErrupTion/ly
-#cd ly
-#~/zig/zig build
-#sudo ~/zig/zig build installexe
-#sudo systemctl enable ly.service
-
 echo "CLEANING UP INSTALLATION..."
-cd
-#rm zig-x86_64-linux-0.14.1.tar.xz
-#rm -rf zig
 sudo nala clean
 
 echo "SETTING DEFAULT APPLICATIONS..."
@@ -186,10 +160,5 @@ xdg-mime default nvim.desktop text/x-log
 echo "REMOVING UNNEEDED PACKAGES..."
 sudo nala purge xterm -y
 sudo nala clean
-
-echo "INSTALLING ZSH PLUGINS..."
-cd
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "INSTALLATION FINISHED! TIME TO REBOOT. RUN 'sudo reboot'."
