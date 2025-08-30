@@ -1,6 +1,5 @@
-#!/bin/bash
 #https://chromewebstore.google.com/detail/ublock-origin/cjpalhdlnbpafiamejdnhcphjbkeiagm?hl=en-GB
-cd
+set -e
 echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS THING OF OURS DOES ITS THING."
 
 echo "PLEASE ENTER YOUR LOGIN PASSWORD AND LET IT DO ITS THING"
@@ -10,7 +9,7 @@ sudo apt update
 
 echo "INSTALLING PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends alacritty light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf fastfetch rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler geany ffmpegthumbnailer quodlibet acpi g++ xwayland  fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge -y
+sudo nala install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting make -y
 sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
@@ -28,27 +27,29 @@ sudo systemctl disable bluetooth
 echo "ENABLING fstrim (SSD OPTIMIZATION PROGRAM)..."
 sudo systemctl enable fstrim.timer
 
+echo "CLONING NvChad..."
+git clone https://github.com/NvChad/starter ~/.config/nvim
+echo "RUN nvim TO INSTALL IT"
+
 echo "CLONING DOTFILES..."
 cd
 git clone https://github.com/Peppereli/dotfiles-deb
 cd ~/dotfiles-deb
 
 echo "COPYING DOTFILES..."
-mkdir -p ~/.config
 mkdir -p ~/Pictures
 rm -rf .git
 cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
+chmod +x ~/.config/fetch
 cd
 echo "CLEANING DOTFILES CLONE..."
 rm -rf ~/dotfiles-deb
 
-
-
 echo "CLONING FONTS..."
 git clone https://github.com/Peppereli/fonts
 echo "COPYING FONTS..."
-sudo cp -rf ~/fonts/* /usr/share/fonts/
+cp -rf ~/fonts/* /.local/share/fonts/
 
 echo "UPDATING FONT CACHE..."
 fc-cache -f -v
@@ -58,40 +59,12 @@ rm -rf ~/fonts
 
 echo "INSTALLING BRAVE BROWSER..."
 curl -fsS https://dl.brave.com/install.sh | sh
-echo "CLONING NVCHAD..."
-git clone -b v2.0 https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-echo "TO INSTALL NVCHAD RUN 'nvim' AND LET IT INSTALL THE PLUGINS"
-cd
-echo "CLONING GTK THEMES..."
-git clone https://github.com/Peppereli/themes
-cd ~/themes
-
-echo "EXTRACTING GTK THEMES..."
-7z x themes.7z
-
-echo "COPYING GTK THEMES..."
-sudo cp -rf ~/themes/themes/* /usr/share/themes/
-sudo cp -rf ~/themes/icons/* /usr/share/icons/
-cd
 
 echo "UPDATING ICON CACHE..."
 gtk-update-icon-cache
 
-echo "CLEANING THEMES CLONE..."
-rm -rf ~/themes
-
 echo "CHANGING THE SHELL TO ZSH..."
 sudo chsh -s $(which zsh) $USER
-
-
-echo "INSTALLING HEROIC GAMES LAUNCHER..."
-wget https://github.com/Heroic-Games-Launcher/HeroicGamesLauncher/releases/download/v2.18.1/Heroic-2.18.1-linux-amd64.deb ~/
-cd
-sudo dpkg -i Heroic-2.18.1-linux-amd64.deb
-rm Heroic-2.18.1-linux-amd64.deb
-
-echo "CLEANING UP INSTALLATION..."
-sudo nala clean
 
 echo "SETTING DEFAULT APPLICATIONS..."
 xdg-mime default xarchiver.desktop application/zip
@@ -102,18 +75,19 @@ xdg-mime default xarchiver.desktop application/x-xz
 xdg-mime default xarchiver.desktop application/x-rar
 xdg-mime default xarchiver.desktop application/x-7z-compressed
 
-xdg-mime default sxiv.desktop image/jpeg
-xdg-mime default sxiv.desktop image/png
-xdg-mime default sxiv.desktop image/gif
-xdg-mime default sxiv.desktop image/bmp
-xdg-mime default sxiv.desktop image/tiff
-xdg-mime default sxiv.desktop image/webp
+xdg-mime default gthumb.desktop image/jpeg
+xdg-mime default gthumb.desktop image/png
+xdg-mime default gthumb.desktop image/gif
+xdg-mime default gthumb.desktop image/bmp
+xdg-mime default gthumb.desktop image/tiff
+xdg-mime default gthumb.desktop image/webp
 
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 xdg-mime default org.pwmt.zathura.desktop application/x-cbz
 xdg-mime default org.pwmt.zathura.desktop application/x-cbr
 
-xdg-mime default Thunar.desktop inode/directory
+xdg-mime default thunar.desktop inode/directory
+gio mime inode/directory thunar.desktop
 
 xdg-mime default brave-browser.desktop x-scheme-handler/http
 xdg-mime default brave-browser.desktop x-scheme-handler/https
@@ -158,6 +132,7 @@ xdg-mime default nvim.desktop text/yaml
 xdg-mime default nvim.desktop text/x-log
 
 echo "REMOVING UNNEEDED PACKAGES..."
+sudo nala update && sudo nala full-upgrade
 sudo nala purge xterm -y
 sudo nala clean
 
