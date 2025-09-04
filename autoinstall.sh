@@ -44,6 +44,7 @@ echo "COPYING DOTFILES..."
 rm -rf .git
 cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
+chmod +x ~/.config/waybar/powermenu
 chmod +x ~/.config/fetch
 cd
 echo "CLEANING DOTFILES CLONE..."
