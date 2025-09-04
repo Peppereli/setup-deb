@@ -8,16 +8,15 @@ echo "UPDATING REPOSITORIES..."
 sudo apt update
 
 echo "INSTALLING PACKAGES..."
-sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep -y
+sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep -y
 sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
-sudo nala update
+sudo apt update
 
 echo "ADDING FLATHUB REPOSITORY..."
-sudo nala install --no-install-recommends flatpak
+sudo apt install --no-install-recommends flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 echo "DISABLING BLUETOOTH..."
@@ -26,10 +25,6 @@ sudo systemctl disable bluetooth
 
 echo "ENABLING fstrim (SSD OPTIMIZATION PROGRAM)..."
 sudo systemctl enable fstrim.timer
-
-echo "CLONING NvChad..."
-git clone https://github.com/NvChad/starter ~/.config/nvim
-echo "RUN nvim TO INSTALL IT"
 
 echo "CLONING DOTFILES..."
 mkdir -p ~/Pictures
@@ -132,8 +127,8 @@ xdg-mime default nvim.desktop text/yaml
 xdg-mime default nvim.desktop text/x-log
 
 echo "REMOVING UNNEEDED PACKAGES..."
-sudo nala update && sudo nala full-upgrade
-sudo nala purge xterm -y
-sudo nala clean
+sudo apt update && sudo apt full-upgrade
+sudo apt autoremove
+sudo apt clean
 
 echo "INSTALLATION FINISHED! TIME TO REBOOT. RUN 'sudo reboot'."
