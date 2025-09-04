@@ -9,7 +9,7 @@ sudo apt update
 
 echo "INSTALLING PACKAGES..."
 sudo apt install --no-install-recommends nala -y
-sudo nala install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome -y
+sudo nala install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep -y
 sudo nala install pipewire pipewire-pulse qbittorrent xdg-desktop-portal-wlr zathura zathura-pdf-poppler zathura-cb neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
@@ -32,12 +32,15 @@ git clone https://github.com/NvChad/starter ~/.config/nvim
 echo "RUN nvim TO INSTALL IT"
 
 echo "CLONING DOTFILES..."
+mkdir -p ~/Pictures
+mkdir -p ~/Music
+mkdir -p ~/movi
+mkdir -p ~/Documents
 cd
 git clone https://github.com/Peppereli/dotfiles-deb
 cd ~/dotfiles-deb
 
 echo "COPYING DOTFILES..."
-mkdir -p ~/Pictures
 rm -rf .git
 cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
@@ -46,16 +49,8 @@ cd
 echo "CLEANING DOTFILES CLONE..."
 rm -rf ~/dotfiles-deb
 
-echo "CLONING FONTS..."
-git clone https://github.com/Peppereli/fonts
-echo "COPYING FONTS..."
-cp -rf ~/fonts/* /.local/share/fonts/
-
 echo "UPDATING FONT CACHE..."
 fc-cache -f -v
-
-echo "CLEANING FONTS CLONE..."
-rm -rf ~/fonts
 
 echo "INSTALLING LIBREWOLF BROWSER..."
 sudo apt update && sudo apt install extrepo -y
