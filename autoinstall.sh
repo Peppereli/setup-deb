@@ -3,10 +3,10 @@ set -e
 echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS THING OF OURS DOES ITS THING."
 
 echo "UPDATING REPOSITORIES..."
-sudo apt update && sudo apt install extrepo -y
+sudo apt update
 
 echo "INSTALLING PACKAGES..."
-sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look mate-polkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb wl-clipboard -y
+sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look mate-polkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb wl-clipboard extrepo -y
 sudo apt install qbittorrent xdg-desktop-portal-wl neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
@@ -38,9 +38,6 @@ cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/waybar/powermenu
 chmod +x ~/.config/fetch
-cd
-echo "CLEANING DOTFILES CLONE..."
-rm -rf ~/dotfiles-deb
 
 echo "UPDATING FONT CACHE..."
 fc-cache -f -v
