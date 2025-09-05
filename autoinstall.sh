@@ -2,14 +2,12 @@
 set -e
 echo "WELCOME TO PEEPS' DEBIAN SETUP WIZARD! JUST SIT BACK AND RELAX WHILE THIS THING OF OURS DOES ITS THING."
 
-echo "PLEASE ENTER YOUR LOGIN PASSWORD AND LET IT DO ITS THING"
-
 echo "UPDATING REPOSITORIES..."
-sudo apt update
+sudo apt update && sudo apt install extrepo -y
 
 echo "INSTALLING PACKAGES..."
-sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look mate-polkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb -y
-sudo nala install qbittorrent xdg-desktop-portal-wl neovim -y
+sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look mate-polkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb wl-clipboard -y
+sudo apt install qbittorrent xdg-desktop-portal-wl neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
 sudo dpkg --add-architecture i386
@@ -36,7 +34,6 @@ git clone https://github.com/Peppereli/dotfiles-deb
 cd ~/dotfiles-deb
 
 echo "COPYING DOTFILES..."
-rm -rf .git
 cp -r "." ~/
 chmod +x ~/.config/sway/exit.sh
 chmod +x ~/.config/waybar/powermenu
@@ -49,11 +46,8 @@ echo "UPDATING FONT CACHE..."
 fc-cache -f -v
 
 echo "INSTALLING LIBREWOLF BROWSER..."
-sudo apt update && sudo apt install extrepo -y
-
 sudo extrepo enable librewolf
-
-sudo apt update && sudo apt install librewolf
+sudo apt install librewolf
 
 echo "UPDATING ICON CACHE..."
 gtk-update-icon-cache
@@ -84,10 +78,10 @@ xdg-mime default org.pwmt.zathura.desktop application/x-cbr
 xdg-mime default thunar.desktop inode/directory
 gio mime inode/directory thunar.desktop
 
-xdg-mime default brave-browser.desktop x-scheme-handler/http
-xdg-mime default brave-browser.desktop x-scheme-handler/https
-xdg-mime default brave-browser.desktop text/html
-xdg-mime default brave-browser.desktop application/xhtml+xml
+xdg-mime default librewolf.desktop x-scheme-handler/http
+xdg-mime default librewolf.desktop x-scheme-handler/https
+xdg-mime default librewolf.desktop text/html
+xdg-mime default librewolf.desktop application/xhtml+xml
 
 xdg-mime default mpv.desktop video/mpeg
 xdg-mime default mpv.desktop video/mp4
@@ -127,7 +121,6 @@ xdg-mime default nvim.desktop text/yaml
 xdg-mime default nvim.desktop text/x-log
 
 echo "REMOVING UNNEEDED PACKAGES..."
-sudo apt update && sudo apt full-upgrade
 sudo apt autoremove
 sudo apt clean
 
