@@ -8,7 +8,7 @@ echo "UPDATING REPOSITORIES..."
 sudo apt update
 
 echo "INSTALLING PACKAGES..."
-sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look lxpolkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb -y
+sudo apt install --no-install-recommends foot light sway swaybg swayidle swaylock ffmpeg yt-dlp waybar grim slurp fzf rofi curl modemmanager network-manager network-manager-gnome iwd bleachbit pavucontrol mtp-tools gvfs-fuse gvfs-backends nwg-look mate-polkit dunst btop gcc zsh gthumb zip unzip thunar thunar-volman thunar-media-tags-plugin thunar-archive-plugin gvfs mpv xarchiver tar 7zip x11-xserver-utils tumbler ffmpegthumbnailer acpi g++ xwayland fonts-noto fonts-noto-cjk fonts-noto-color-emoji xwaylandvideobridge zsh-autosuggestions zsh-syntax-highlighting fonts-liberation libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3 fonts-font-awesome gammastep pipewire pipewire-pulse wireplumber zathura zathura-pdf-poppler zathura-cb -y
 sudo nala install qbittorrent xdg-desktop-portal-wl neovim -y
 
 echo "ADDING 32-BIT ARCHITECTURE SUPPORT..."
